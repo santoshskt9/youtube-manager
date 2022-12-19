@@ -1,24 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import Drawer from './components/Drawer/Drawer';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Success from './components/Success/Success';
 
 function App() {
+  // const navigate = useNavigate();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Drawer />} />
+          <Route path='/success' element={<Success />} />
+          <Route path='*' element={<div>
+            <h1>404</h1>
+            <h1>Oops, you might be lost! </h1><Link to='/'>Back to Home</Link>
+          </div>} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
